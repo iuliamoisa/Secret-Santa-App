@@ -13,3 +13,24 @@
 /**
  * END --- SETUP TAILWINDCSS EDIT
  */
+
+ @layer base{
+  svg{
+    @apply fill-current; /* fill-current is a
+    tailwindcss class that sets the fill to the current color
+    more precisely, sets the fill for the svg based on whatever
+    the current text color is
+    */
+  }
+
+ }
+ @layer components{
+  .indicator{
+    @apply center h-6 w-6 rounded-full border-2;
+  }
+ }
+ @layer utilities{
+  .center {
+    @apply flex justify-center items-center;
+  }
+ }
