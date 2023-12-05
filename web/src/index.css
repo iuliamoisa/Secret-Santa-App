@@ -15,6 +15,44 @@
  */
 
  @layer base{
+  label {
+    @apply font-handwriting uppercase text-xl tracking-tighter;
+  }
+
+  label:has(+ input:placeholder-shown){ /* we style the label only if it
+    has the input right after it with the placeholder-shown pseudo class
+    acel "+" inseamna ca inputul tre sa urmeze dupa label
+    folosim "has" => stilizam label si NU inputul
+    */
+
+    @apply text-3xl absolute top-8 left-8 pointer-events-none transition-all duration-300;
+  }
+
+  label:has(+ input:focus),
+  label:has(+ input){
+    @apply absolute top-2 left-2 text-xl
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="url"],
+  input[type="number"],
+  input[type="email"],
+  input[type="tel"]
+  { /* only affects input elements with type="text" */
+    @apply font-sans text-2xl h-[100px] w-full px-7 border-black border-2;
+  }
+
+/* invalid label */
+label:has(+ input:invalid:not(:placeholder-shown)) {
+  @apply text-white
+}
+
+/* invalid input */
+input:invalid:not(:placeholder-shown){
+  @apply bg-orangeRed border-fireEngineRed
+}
+
   svg{
     @apply fill-current; /* fill-current is a
     tailwindcss class that sets the fill to the current color
